@@ -1,4 +1,4 @@
-# license-keys
+# License Keys NPM-Package
 
 ![npm](https://img.shields.io/npm/v/license-keys)
 ![npm](https://img.shields.io/npm/dt/license-keys)
