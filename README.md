@@ -34,5 +34,7 @@ console.log(key);
 - charset: The character set to use when generating the key (optional, default: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
 - type: The type of the key, either 'SQL' or 'JSON' (required)
 
-## Contributing
-If you want to contribute to this project, feel free to submit a pull request or open an issue on GitHub.
+## Todo
+- Add functionality for saving keys
+- Add license verification
+- Add encryption for key generation and verification
