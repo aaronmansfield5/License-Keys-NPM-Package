@@ -32,7 +32,7 @@ console.log(key);
 ## Options
 - length: The length of each segment in the generated key (required, must be greater than or equal to 4)
 - charset: The character set to use when generating the key (optional, default: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
-- type: The type of the key, either 'SQL' or 'JSON' (required)
+- type: The type of the key, either 'SQL' or 'JSON' (optional, not yet in use, check Todo)
 
 ## Todo
 - Add functionality for saving keys
