@@ -14,9 +14,9 @@ function createKey(options) {
     if (options.length < 4) {
         throw new Error("Length must be greater than or equal to 4.");
     }
-    if (!options.type) {
+    /*if (!options.type) {
         throw new Error("Type must be included.");
-    }
+    }*/
 
     // Set the default charset if not provided
     const charset = options.charset || "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
