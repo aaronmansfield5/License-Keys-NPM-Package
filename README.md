@@ -7,34 +7,69 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/aaronmansfield5/License-Keys-NPM-Package)
 ![GitHub stars](https://img.shields.io/github/stars/aaronmansfield5/License-Keys-NPM-Package)
 
-A simple and efficient library for generating license keys, developed by [aaronmansfield5](https://github.com/aaronmansfield5).
+**license-keys** is an NPM package developed by [aaronmansfield5](https://github.com/aaronmansfield5) that allows you to generate unique, random license keys for your applications or services. You can store these keys in a MySQL database or a JSON file.
 
 ## Installation
 
-To install the `license-keys` package, simply run:
+Use the package manager [npm](https://www.npmjs.com/) to install `license-keys`.
 
 ```bash
 npm install license-keys
 ```
 ## Usage
-```js
+```javascript
 const { createKey } = require("license-keys");
 
-const options = {
-  length: 4,
-  charset: "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-  type: "SQL"
-};
+(async () => {
+  try {
+    const options = {
+      length: 4,
+      charset: "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+      MySQL: {
+        host: "localhost",
+        user: "root",
+        password: "password",
+        database: "myDatabase",
+        tableName: "myTable",
+        columnName: "myColumn",
+      },
+      JSON: {
+        path: "./data/userkeys.json",
+      },
+    };
 
-const key = createKey(options);
-console.log(key);
+    const key = await createKey(options);
+    console.log("Generated key:", key);
+  } catch (error) {
+    console.error("Error generating key:", error);
+  }
+})();
 ```
-## Options
-- length: The length of each segment in the generated key (required, must be greater than or equal to 4)
-- charset: The character set to use when generating the key (optional, default: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
-- type: The type of the key, either 'SQL' or 'JSON' (optional, not yet in use, check Todo)
+## API
+### createKey(options)
+Generates a unique license key based on the provided options.
+
+- **options** {Object}
+  - **length** {number} - Length of each segment in the generated key (must be greater than or equal to 4).
+  - **charset** {string} (optional) - Character set to use when generating the key (default: `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890`).
+  - **MySQL** {Object} (optional) - MySQL-related options for storing keys.
+    - **host** {string} - MySQL server host.
+    - **user** {string} - MySQL server user.
+    - **password** {string} - MySQL server password.
+    - **database** {string} - MySQL database name.
+    - **tableName** {string} - MySQL table name.
+    - **columnName** {string} - MySQL column name.
+  - **JSON** {Object} (optional) - JSON file storage options.
+    - **path** {string} - File path for JSON storage (e.g. './data/userkeys.json').
+    
+Returns a `Promise` that resolves to the generated key.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
 
 ## Todo
-- Add functionality for saving keys
+- Add functionality for saving keys in JSON
 - Add license verification
 - Add encryption for key generation and verification
