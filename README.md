@@ -7,7 +7,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/aaronmansfield5/License-Keys-NPM-Package)
 ![GitHub stars](https://img.shields.io/github/stars/aaronmansfield5/License-Keys-NPM-Package)
 
-**license-keys** is an NPM package developed by [aaronmansfield5](https://github.com/aaronmansfield5) that allows you to generate unique, random license keys for your applications or services. You can store these keys in a MySQL database or a JSON file.
+**license-keys** is an NPM package developed by [aaronmansfield5](https://github.com/aaronmansfield5) that allows you to generate unique, random license keys for your applications or services. You can store these keys in a MySQL database.
 
 ## Installation
 
