@@ -32,10 +32,7 @@ const { createKey } = require("license-keys");
         database: "myDatabase",
         tableName: "myTable",
         columnName: "myColumn",
-      },
-      JSON: {
-        path: "./data/userkeys.json",
-      },
+      }
     };
 
     const key = await createKey(options);
