@@ -1,4 +1,4 @@
-# License Keys NPM-Package
+# <a href="https://www.npmjs.com/package/license-keys">License Keys NPM-Package</a>
 
 ![npm](https://img.shields.io/npm/v/license-keys)
 ![npm](https://img.shields.io/npm/dt/license-keys)
