@@ -126,6 +126,7 @@ async function createKey(options) {
         if (!options.MySQL.database) throw new Error("Database is required.");
         if (!options.MySQL.tableName) throw new Error("Table Name is required.");
         if (!options.MySQL.columnName) throw new Error("Column Name is required.");
+        if (!options.OpenPGP) throw new Error("OpenPGP details required.");
         const con = mysql.createConnection({
             host: options.MySQL.host,
             user: options.MySQL.user,
@@ -183,13 +184,13 @@ async function verifyKey(options) {
     const end = util.promisify(con.end).bind(con);
     try {
         await connect()
-        const result = await query("SELECT `data` FROM `userkeys`")
+        const result = await query(`SELECT \`${options.MySQL.columnName}\` FROM \`${options.MySQL.tableName}\``)
         if (result.length >= 1) {
             const isIncluded = (await Promise.all(result.map(encrypted => decryptData(encrypted.data, options.OpenPGP.privateKey, options.OpenPGP.passphrase)))).some(decryptedData => decryptedData == options.key);
             if(isIncluded) {
                 const matchingIndex = (await Promise.all(result.map(encrypted => decryptData(encrypted.data, options.OpenPGP.privateKey, options.OpenPGP.passphrase)))).findIndex((decryptedData) => decryptedData == options.key);
                 const encryptedData = matchingIndex !== -1 ? result[matchingIndex].data : null;
-                await query(`DELETE FROM \`userkeys\` WHERE \`${options.MySQL.tableName}\`.${options.MySQL.columnName}='${encryptedData}'`)
+                await query(`DELETE FROM \`${options.MySQL.tableName}\` WHERE \`${options.MySQL.tableName}\`.${options.MySQL.columnName}='${encryptedData}'`)
             }
             return isIncluded;
         } else {
